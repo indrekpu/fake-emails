@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="24" y="16" width="800" height="600" text="Browser&#xA;http://..." measuredWidth="800" measuredHeight="600">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="321" y="112" text="FAKE EMAILS " measuredWidth="174" measuredHeight="46">
+    <font size="28px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="3" x="251" y="184" text="Tuvasta võltsitud e-kirjad kiirelt ja lihtsalt fake emailis abil" measuredWidth="313" measuredHeight="23" borderColor="#444">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="4" x="251" y="223" measuredWidth="100" measuredHeight="100"/>
+  <widgets xsi:type="model:Text" id="5" x="363" y="223" text="Fake emails võimaldab teil täpsemalt teha: &#xA;* seda&#xA;* seda&#xA;* ja ka natuke seda" measuredWidth="227" measuredHeight="60">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="64" y="496" width="664" measuredWidth="664" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="7" x="64" y="568" text="Kasutaja 1 arvamus" measuredWidth="107" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="8" x="321" y="568" text="Kasutaja 2 arvamus" measuredWidth="107" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="10" x="93" y="512" width="50" height="50" measuredWidth="50" measuredHeight="50"/>
+  <widgets xsi:type="model:Image" id="11" x="336" y="512" width="50" height="50" measuredWidth="50" measuredHeight="50"/>
+  <widgets xsi:type="model:TextField" id="12" x="184" y="525" text="&quot;Mul oli nii tore&quot;" measuredWidth="98" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="14" x="432" y="525" text="&quot;Sain kõik teada, mida ma teada tahtsin&quot;" measuredWidth="224" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="15" x="272" y="416" text="Proovi järgi nüüd ja kiirelt!" measuredWidth="147" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HScrollbar" id="16" x="34" y="590" width="790" measuredWidth="790" measuredHeight="17"/>
+  <widgets xsi:type="model:VScrollbar" id="17" x="797" y="68" height="523" measuredWidth="17" measuredHeight="523"/>
+  <widgets xsi:type="model:Button" id="18" x="459" y="415" text="OK" measuredWidth="36" measuredHeight="25">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

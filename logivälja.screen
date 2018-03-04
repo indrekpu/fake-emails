@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="8" y="16" width="800" height="600" text="Browser&#xA;http://..." measuredWidth="800" measuredHeight="600">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="309" y="100" text="FAKE EMAILS " measuredWidth="174" measuredHeight="46">
+    <font size="28px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="64" y="496" width="664" measuredWidth="664" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="7" x="648" y="123" text="Abi" measuredWidth="24" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HScrollbar" id="16" x="34" y="590" width="790" measuredWidth="790" measuredHeight="17"/>
+  <widgets xsi:type="model:VScrollbar" id="17" x="797" y="68" height="523" measuredWidth="17" measuredHeight="523"/>
+  <widgets xsi:type="model:Label" id="19" x="648" y="162" text="Source code" measuredWidth="71" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="20" x="648" y="206" text="Kasutustingimused" measuredWidth="107" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="21" x="174" y="216" text="Aitäh, et kasutasid meie teenust!" measuredWidth="468" measuredHeight="53">
+    <font size="32px"/>
+  </widgets>
+  <widgets xsi:type="model:LinkBar" id="22" x="303" y="528" text="Home,Abi,Forum,Kontakt" measuredWidth="194" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="36" height="23" text="Home"/>
+    <items x="54" y="0" width="21" height="23" text="Abi"/>
+    <items x="93" y="0" width="38" height="23" text="Forum"/>
+    <items x="149" y="0" width="44" height="23" text="Kontakt"/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="36" x="342" y="304" text="Jaga oma kogemust:" measuredWidth="118" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="37" x="336" y="408" text="Kirjuta meile tagasiside!" measuredWidth="144" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="38" x="334" y="344" text="Linkedin" measuredWidth="48" measuredHeight="58" textAlignment="Center" icon="linkedin (large)" iconPosition="top">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="39" x="400" y="344" text="FB" measuredWidth="32" measuredHeight="58" textAlignment="Center" icon="thumbs-up (large)" iconPosition="top">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
