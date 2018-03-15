@@ -3,7 +3,7 @@
 class User extends CI_Model
 {
 	public function createUser($params){
-
+		
 	}
 
 	public function getById($id){
