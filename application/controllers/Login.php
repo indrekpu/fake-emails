@@ -11,7 +11,6 @@ class Login extends CI_Controller{
 	}
 
 	public function submit(){
-		//TODO load user model, check user data, start session.	
 		$formData = $this->input->post();
 		$email =  $this->input->post("email");
 		$password =  $this->input->post("password");

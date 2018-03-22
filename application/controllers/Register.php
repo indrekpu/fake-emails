@@ -6,6 +6,9 @@ class Register extends CI_Controller{
 	}
 
 	public function submit(){
+		$this->load->model('user');
+		$this->load->model('mail');
+
 		$formData = $this->input->post();
 		$name =  $this->input->post("full_name");
 		$email =  $this->input->post("email");
@@ -13,34 +16,41 @@ class Register extends CI_Controller{
 		$confirmPassword =  $this->input->post("confirm_passwd");
 
 		if($password != $confirmPassword){
-			$this->session->set_flashdata('failure', "Parool ei uhti.");
-			redirect(base_url() . 'register', 'refresh');
+			$this->redirectWithMessage('register', 'failure', "Paroolid ei uhti!");
 		}
 
-		$this->load->model('user');
+		if($this->user->doesUserExist($email)){
+			$this->redirectWithMessage('register', 'failure', "Selle emailiga on juba registreeritud.");
+		}
 
-		if(!$this->user->doesUserExist($email)){
-			$this->session->set_flashdata('failure', "Selle emailiga on juba registreeritud.");
-			redirect(base_url() . 'register', 'refresh');
+		if(!$this->validateFields($name, $email, $password)){
+			$this->redirectWithMessage('register', 'failure', "Kontrolli andmeid!");
 		}
 		
 		$result = $this->user->createUser($name, $email, "", "", $password);
 
-		$this->load->helper('url');
-
 		if($result){
-			echo 'successful' . $result;
-			$this->session->set_flashdata("success", "Registeerimine 6nnestus!");
-			redirect('login', 'refresh');
+			$this->mail->sendVerification($email, $this->user->getUserVerificationCode($email)); //Sending verification to user.
+			$this->redirectWithMessage('login', 'success', "Registeerimine õnnestus!");
 		} else {
-			echo 'failed' . $result;
-			redirect(base_url(), 'refresh');
+			$this->redirectWithMessage('register', 'failure', "Registeerimine ebaõnnestus!");
 		}
-		
+	}
 
-		echo "$name - $email - $password - $confirmPassword";
+	private function validateFields($name, $email, $password){
+		$name = preg_match("%[A-Za-zÜÕÄÖüõäö\. -]{3,30}%", $name);
+		$email = preg_match("%[A-Za-z0-9._-]+@[A-Za-z-]{1,20}\.[A-Za-z]{2,10}(\.[A-Za-z]{2,10})?%", $email);
+		$password = preg_match("%[A-Za-zÜÕÄÖüõäö0-9.]{6,30}%", $password);
 
-		//redirect
+		if($name and $email and $password){
+			return true;
+		}
+		return false;
+	}
+
+	public function redirectWithMessage($pageName, $status, $message){
+		$this->session->set_flashdata($status, $message);
+		redirect(base_url() . $pageName, 'refresh');
 	}
 
 }

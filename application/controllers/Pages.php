@@ -3,6 +3,16 @@ class Pages extends CI_Controller {
 
         public function view($page = 'home')
         {
+        	if(!isset($this->session->statistics)){
+        		$this->load->model('statistics');
+        		$this->load->model('data_request');
+
+        		$ipInformation = $this->data_request->getUrlContents($this->statistics->getIp());
+        		$this->statistics->insertStatistics($ipInformation->country);
+
+        		$this->session->set_userdata('statistics', 'true');
+        	}
+
 			if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
 			{
 				 // Whoops, we don't have a page for that!
@@ -21,5 +31,6 @@ class Pages extends CI_Controller {
 			$this->load->view('templates/footer', $data);
 
         }
+
 }
 ?>
