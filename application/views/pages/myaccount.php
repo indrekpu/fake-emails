@@ -1,7 +1,8 @@
 <?php
 if($this->session->email == null){ // kui kasutaja pole sisse logitud.
-	redirect(base_url(), 'refresh');
-}
+		$this->session->set_userdata('redirect', 'myaccount');
+		redirect(base_url() . "login", 'refresh');
+	}
 ?>
 
 <div class="container">
