@@ -11,5 +11,11 @@
 			<input type="password" name="password">
 		</div>
 		<input id="login_form_submit" type="submit" name="submit">
+		<?php
+			$redirect = $this->session->redirect;
+			if($redirect != null){
+				echo "<input name=\"redirect\" value=\"$redirect\" type=\"hidden\">";
+			}
+		?>
 	</form>
 </div>

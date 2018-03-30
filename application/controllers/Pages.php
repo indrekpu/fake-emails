@@ -4,11 +4,11 @@ class Pages extends CI_Controller {
         public function view($page = 'home')
         {
         	if(!isset($this->session->statistics)){
-        		$this->load->model('statistics');
+        		$this->load->model('statistics_model');
         		$this->load->model('data_request');
 
-        		$ipInformation = $this->data_request->getUrlContents($this->statistics->getIp());
-        		$this->statistics->insertStatistics($ipInformation->country);
+        		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+        		$this->statistics_model->insertStatistics($ipInformation->country);
 
         		$this->session->set_userdata('statistics', 'true');
         	}

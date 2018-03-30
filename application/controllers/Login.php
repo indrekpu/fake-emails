@@ -19,7 +19,12 @@ class Login extends CI_Controller{
 		$result = $this->user->loginUser($email, $password);
 
 		if($result){
-			redirect(base_url(), 'refresh');
+			if($this->input->post("redirect") != null){ //For melding purpose we check if the redirect value is assigned.
+				$this->session->unset_userdata('redirect'); 
+				redirect(base_url() . $this->input->post("redirect"), 'refresh');
+			} else {
+				redirect(base_url(), 'refresh');
+			}
 		} else {
 			redirect(base_url() . 'login', 'refresh');
 		}
