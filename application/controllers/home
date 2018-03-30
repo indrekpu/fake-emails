@@ -1,0 +1,15 @@
+
+
+<?php
+
+class home extends CI_Controller{
+
+
+	function loadRegister(){
+    $this->load->view('register')
+}
+
+}
+
+?>
+
