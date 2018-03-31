@@ -1460,7 +1460,8 @@ a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]
 
 body {
   font-family: "Roboto", sans-serif;
-  font-weight: 300; }
+  font-weight: 300; 
+  font-size:24px;}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300; }
@@ -6377,7 +6378,7 @@ footer.page-footer {
     transition: 0.5s; }
 
 table th {
-  font-size: 0.9rem;
+  font-size: 24px;
   font-weight: 400; }
 
 table td {

@@ -9,7 +9,7 @@
 				<meta charset="UTF-8">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<<<<<<< HEAD
+
 				<link type="text/css" rel="stylesheet" href="<?php echo asset_url(); ?>/css/login.css"> 
 				
 				<!-- Bootstrap libary
@@ -19,7 +19,7 @@
 				<!-- Bootstrap edited for css validation! Does not work properly at the moment.-->
 			  <link rel="stylesheet" href="<?php echo asset_url(); ?>/css/bootstrap.min.css">
 				 <script src="<?php echo asset_url(); ?>js/bootstrap.min.js"></script>
-=======
+
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 				<link type="text/css" rel="stylesheet" href="<?php echo asset_url(); ?>/css/login.css">
@@ -32,7 +32,7 @@
 				<link href="<?php echo asset_url(); ?>css/mdb.min.css" rel="stylesheet">
 				<script type="text/javascript" src="<?php echo asset_url(); ?>js/popper.min.js"></script>
 				<script type="text/javascript" src="<?php echo asset_url(); ?>js/mdb.min.js"></script>
->>>>>>> a3dbd6e5d433f40fb11e1324fbdd24d5fa96f03e
+
         </head>
         <body>
 
