@@ -1,3 +1,5 @@
+<p style="padding-bottom: 4ex"></p> 
+
 <?php
 if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 		$this->session->set_userdata('redirect', 'myaccount');

@@ -1,3 +1,5 @@
+<p style="padding-bottom: 4ex"></p> 
+
 <?php echo $this->session->flashdata('success'); //when registration was successful, user is redirected to here with success msg. ?>
 <div class="container">
 	<!-- Form to test login system. -->
@@ -10,6 +12,8 @@
 			<span class="login_label">Parool:</span>
 			<input type="password" name="password">
 		</div>
+
+		<p style="padding-bottom: 2ex"></p> 
 		<input id="login_form_submit" type="submit" name="submit">
 		<?php
 			$redirect = $this->session->redirect;
