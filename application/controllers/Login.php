@@ -26,6 +26,7 @@ class Login extends CI_Controller{
 				redirect(base_url(), 'refresh');
 			}
 		} else {
+			$this->session->set_flashdata('success', 'Kontrolli väljasid!');
 			redirect(base_url() . 'login', 'refresh');
 		}
 	}

@@ -1,14 +1,14 @@
 <div class="container">
 	
 	<h3>Brauserite kasutus</h3>
-	<div id="col-md-5">
+	<div class="col-md-6">
 		<canvas id="browser_chart"></canvas>
 	</div>
 	<h3>Operatsioonisüsteemide kasutus</h3>
-	<div id="col-md-5">
+	<div class="col-md-6">
 		<canvas id="platform_chart"></canvas>
 	</div>
-	<script type="text/javascript" src="<?php echo asset_url(); ?>js/charts.js"></script>
+	<script src="<?php echo asset_url(); ?>js/charts.js"></script>
 	<script>
 
 		$(document).ready(function() {
@@ -38,7 +38,7 @@
 	<button id="expandButton" class="btn-primary">Rohkem</button>
 </div>
 
-<script type="text/javascript">
+<script>
 	$(document).ready(function(){
 		
 		$("#expandButton").click(function() {

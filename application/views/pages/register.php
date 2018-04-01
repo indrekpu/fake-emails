@@ -16,7 +16,7 @@
 
 		<div>
 			<span class="register_label">Parool:</span>
-			<input type="password" name="passwd">
+			<input type="password" name="passwd"><small>Vähemalt 6 karakterit pikk!</small>
 		</div>
 
 		<div>

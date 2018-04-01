@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <p style="padding-bottom: 4ex"></p> 
 
 <?php
@@ -9,7 +7,6 @@ if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 	}
 ?>
 
->>>>>>> origin/master
 <div class="container">
 	<h3>Kasutaja informatsioon</h3>
 	<div id="user_info_panel">
