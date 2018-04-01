@@ -1,5 +1,14 @@
-
+<script>
+    $(document).ready(function(){
+        var date = new Date();
+        document.getElementById("date_span").innerHTML = date.toString();
+    });
+</script>
 <p style="padding-bottom: 4ex"></p> 
+<div style="font-size: 12px;">
+    <span>Tänane kuupäev: </span>
+    <span id="date_span"></span>
+</div>
 <div class="container">
     <h1 class="text-center">FAKE EMAILS</h1>
     <h2 class="text-center">Tuvasta võltsitud e-kirjad kiiresti ja mugavalt </h2>
