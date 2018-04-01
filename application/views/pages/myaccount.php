@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+<p style="padding-bottom: 4ex"></p> 
+
+<?php
+if($this->session->email == null){ // kui kasutaja pole sisse logitud.
+		$this->session->set_userdata('redirect', 'myaccount');
+		redirect(base_url() . "login", 'refresh');
+	}
+?>
+
+>>>>>>> origin/master
 <div class="container">
 	<h3>Kasutaja informatsioon</h3>
 	<div id="user_info_panel">

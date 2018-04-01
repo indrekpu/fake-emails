@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<kontakt xmlns:s="http://www.w3schools.com/NS/">
+	<s:nimi>FAKE EMAILS</s:nimi>
+	<s:email>fakeemailsproject@gmail.com</s:email>
+	<s:aadress1>Tartu Ülikooli Arvutiteaduste Instituut</s:aadress1>
+	<s:aadress2>Juhan Liivi 2, 50409 Tartu</s:aadress2>
+</kontakt>
