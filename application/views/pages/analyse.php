@@ -12,5 +12,11 @@
 			<input type="submit" name="submit">
 		</form>
 	</div>
-	<p><?php print_r($this->session->flashdata('result'));/* Prints result after upload.*/ ?></p>
+	<p><?php $result = $this->session->flashdata('result');
+		if($result != null){
+			foreach($result as $res){
+				echo $res . "<br>";
+			}
+		}
+	?></p>
 </div>

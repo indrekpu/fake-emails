@@ -8,21 +8,31 @@ class Analyse extends CI_Controller{
 
 
 	public function upload(){
+		$this->load->model('user');
 
+		
 		$config = array(
-		'upload_path' => $this->directory,
+		'upload_path' => $this->directory . $this->session->id,
 		'allowed_types' => $this->allowedFileTypes,
-		'overwrite' => TRUE,
+		'overwrite' => FALSE,
 		'max_size' => $this->maxFileSize
 		);
 		$this->load->library('upload', $config);
+
+		if(!is_dir($this->directory . $this->session->id)){
+			mkdir($this->directory . $this->session->id);
+		}
 
 		if(!$this->upload->do_upload('email_file')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->session->set_flashdata('result', $error);
 			redirect(base_url() . "analyse", 'refresh');
 		} else {
-			$success = array('success');
+			$fileData = $this->upload->data();
+			$fileName = $fileData['file_name'];
+			$result = $this->user->addFileToUser($this->session->email, $fileName);
+			
+			$success = array($result);
 			$this->session->set_flashdata('result', $success);
 			redirect(base_url() . "analyse", 'refresh');
 		}
