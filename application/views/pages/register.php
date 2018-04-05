@@ -3,31 +3,33 @@
 <p style="padding-bottom: 4ex"></p> 
 <div class="container">
 	<?php echo $this->session->flashdata('failure'); ?>
-	<form name="register" action="<?php echo base_url(); ?>register/submit" method="POST">
-		<div>
-			<span class="register_label">Nimi:</span>
-			<input type="text" name="full_name">
-		</div>
+	<div id="login_form_container" class="row justify-content-md-center">
+		<form name="register" action="<?php echo base_url(); ?>register/submit" method="POST" class="col col-lg-3">
+			<div class="row">
+				<div class="col col-lg-1"><span class="register_label">Nimi:</span></div>
+				<div class="col col-lg-10"><input type="text" class="form-control" name="full_name"></div>
+			</div>
 
-		<div>
-			<span class="register_label">Email:</span>
-			<input type="text" name="email">
-		</div>
+			<div class="row">
+				<div class="col col-lg-1"><span class="register_label">Email:</span></div>
+				<div class="col col-lg-10"><input type="text" class="form-control" name="email"></div>
+			</div>
 
-		<div>
-			<span class="register_label">Parool:</span>
-			<input type="password" name="passwd"><small>Vähemalt 6 karakterit pikk!</small>
-		</div>
+			<div class="row">
+				<div class="col col-lg-1"><span class="register_label">Parool:</span></div>
+				<div class="col col-lg-10"><input type="password" class="form-control" name="passwd"><small>Vähemalt 6 karakterit pikk!</small></div>
+			</div>
 
-		<div>
-			<span class="register_label">Kinnita parool:</span>
-			<input type="password" name="confirm_passwd">
-		</div>
+			<div class="row">
+				<div class="col col-lg-1"><span class="register_label">Kinnita parool:</span></div>
+				<div class="col col-lg-10"><input type="password" class="form-control" name="confirm_passwd"></div>
+			</div>
 
-		<p style="padding-bottom: 2ex"></p> 
+			<p style="padding-bottom: 2ex"></p> 
 
-		<input type="submit" name="submit">
-	</form>
+			<div class="row"><input type="submit" class="btn btn-dark" name="submit"></div>
+		</form>
+	</div>
 </div>
 
 

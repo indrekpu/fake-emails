@@ -17,7 +17,13 @@
 	<p><?php $result = $this->session->flashdata('result');
 		if($result != null){
 			foreach($result as $res){
-				echo $res . "<br>";
+				if($res == 1){
+					echo 'Fail serveri laetud!';
+				} else if($res == 0){
+					echo 'Error';
+				} else {
+					echo $res . "<br>";
+				}
 			}
 		}
 	?></p>

@@ -36,5 +36,26 @@ class Login extends CI_Controller{
 		redirect(base_url(), 'refresh');
 	}
 
+	public function fbLogin(){
+		$fb = new \Facebook\Facebook([
+			'app_id' => '163711774288814',
+			'app_secret' => '766dba50bd054df89e9b3ca8881bc2f3',
+			'default_graph_version' => 'v2.12' 
+		]);
+
+		try {
+		  $response = $fb->get('/me', '{access-token}');
+		} catch(\Facebook\Exceptions\FacebookResponseException $e) {
+		  echo 'Graph returned an error: ' . $e->getMessage();
+		  exit;
+		} catch(\Facebook\Exceptions\FacebookSDKException $e) {
+		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+		  exit;
+		}
+
+		$me = $response->getGraphUser();
+		echo 'Logged in as ' . $me->getName();
+	}
+
 }
 ?>

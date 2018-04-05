@@ -1,0 +1,2 @@
+kui lisaks oleks vaja mõne protsessi kettapäringuid eelistada teiste protsesside päringutele, siis missugust planeerijat soovitaksite?
+

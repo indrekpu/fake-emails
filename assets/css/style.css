@@ -1,36 +1,26 @@
 
 body {
- font-size: 20px;
  color: #132639;
- 
+ font-size:14px;
 }
 
+.login_label{
+    font-size: 14px;
+    padding-left:10px;
+}
 
-
-li {content: "•"; 
+#home_desc_list li {
+    content: "•"; 
 	color:#2d5986;
-    font-size: 20px;
-
+    font-size: 15px;
 }
 
-h1 {
-
- color: #060d13;
-
+#home_desc_list p {
+    font-size: 18px;
 }
 
-h2 {
 
-
- color: #060d13;
-
-}
-
-.container {
-    font-size: 20px;
-}
-
-button {
+#home_button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -41,8 +31,13 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    font-size: 20px;
 }
-/* Your custom styles */
+
+
+#login_form_container{
+    max-width:200px;
+}
 
 /*Here I will create a style for popup, got that from w3schools.com*/
 

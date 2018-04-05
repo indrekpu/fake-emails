@@ -18,7 +18,7 @@
          <div class="row">
 
             <div class="col-md-4 col-md-offset-1"><img src="<?php echo base_url(); ?>/assets/img/emails.jpg" class="img-responsive" alt="Fake-emailsiga"></div>
-            <div class="col-*-*">
+            <div id="home_desc_list" class="col-*-*">
                 <p class="text-center">Fake-emailsiga:</p>
                  <ul>
                     <li>tuvasta e-mailide tegelik saatmisaeg</li>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-md-5 col-md-offset-1"> Proovi järele kiirelt ja lihtsalt:  </div>
             <div class="col-*-*"> 
-                <button onclick="location='analyse'">Vii mind tuvasta!</button>
+                <button id="home_button" onclick="location='analyse'">Vii mind tuvasta!</button>
             </div>      
         </div>
     </div>
