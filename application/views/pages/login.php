@@ -1,29 +1,44 @@
-<p style="padding-bottom: 4ex"></p> 
-
-<?php echo $this->session->flashdata('success'); //when registration was successful, user is redirected to here with success msg. ?>
 <div class="container">
+	<script src="<?php echo asset_url(); ?>js/field_validator.js"></script>
+	
+	  <?php 
+	  	if($this->session->flashdata('success') != null){
+	  		echo "<div class=\"alert alert-success\"><strong>Õnnestus!</strong> ";
+	  		echo $this->session->flashdata('success');
+	  		echo "</div>";
+	  	}
+	  	if($this->session->flashdata('failure') != null){
+	  		echo "<div class=\"alert alert-danger\"><strong>Hoiatus!</strong> ";
+			echo $this->session->flashdata('failure');
+			echo "</div>";
+	  	}
+	  ?>
+	
+
 	<!-- Form to test login system. -->
-	<div id="login_form_container" class="row justify-content-md-center">
-		<form name="login" action="<?php echo base_url(); ?>login/submit" method="POST" class="col col-lg-3">
-			<div class="row">
-				<div class="col col-lg-1 login_label"><span>Email:</span></div>
-				<div class="col col-lg-10"><input type="text" class="form-control" name="email"></div>
-				
+	<div id="login_form_container" class="h-100 row justify-content-center align-items-center">
+		<form name="login" action="<?php echo base_url(); ?>login/submit" method="POST" class="col col-lg-3" id="login_form">
+			<div class="row justify-content-center pb-3">
+				<span id="login_form_header">Logi sisse oma kasutajasse</span>
 			</div>
-			<div class="row pt-3">
-				<div class="col col-lg-1 login_label"><span>Parool:</span></div>
-				<div class="col col-lg-10"><input type="password" class="form-control" name="password"></div>
+			<div class="pt-3">
+				<input type="text" class="form-control" name="email" placeholder="Email" id="login_form_email">
 			</div>
-
-			<p style="padding-bottom: 2ex"></p> 
-			<input id="login_form_submit" class="btn btn-dark" type="submit" name="submit" value="Logi">
-
+			<div class="pt-3">
+				<input type="password" class="form-control" name="password" placeholder="Parool" id="login_form_password">
+			</div>
 			
-			<!--<fb:login-button 
-			  scope="public_profile,email"
-			  onlogin="checkLoginState();">
-			</fb:login-button>-->
-
+			<div class="pt-3">
+				<input id="login_form_submit" class="btn btn-dark btn-block" type="submit" name="submit" value="Logi">
+				<fb:login-button 
+				  scope="public_profile,email"
+				  onlogin="checkLoginState();">
+				</fb:login-button>
+			</div>
+			
+			<div class="pt-3">
+				<a href="register">Registreeri</a>
+			</div>
 			<?php
 				$redirect = $this->session->redirect;
 				if($redirect != null){
@@ -33,3 +48,9 @@
 		</form>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	addEmailFieldChangeListener("#login_form_email");
+	addPasswordFieldChangeListener("#login_form_password");
+});
+</script>

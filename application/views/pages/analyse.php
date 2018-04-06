@@ -8,10 +8,14 @@
 ?>
 <div class="container">
 	Analüüsimise leht
-	<div class="form_container">
+	<div class="form_container row justify-content-center align-items-center">
 		<?php echo form_open_multipart('analyse/upload'); ?>
-			<p>Lae ülesse fail: <input type="file" name="email_file"></p>
-			<input type="submit" name="submit">
+			<p>Lae ülesse fail: </p>
+			<div class="custom-file">
+				<input type="file" class="custom-file-input" name="email_file">
+				<label class="custom-file-label" for="customFile">Vali fail</label>
+			</div>
+			<input type="submit" class="btn btn-dark" name="submit" value="Lae">
 		</form>
 	</div>
 	<p><?php $result = $this->session->flashdata('result');

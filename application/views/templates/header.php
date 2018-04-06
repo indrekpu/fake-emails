@@ -26,10 +26,6 @@
 
 				<link type="text/css" rel="stylesheet" href="<?php echo asset_url(); ?>/css/login.css">
 
-				<!-- Bootstrap edited for css validation! Does not work properly at the moment.-->
-				<link rel="stylesheet" href="<?php echo asset_url(); ?>/css/bootstrap.min.css">
-				<script src="<?php echo asset_url(); ?>js/bootstrap.min.js"></script>
-
 				<!-- MD Bootstrap -->
 				<link href="<?php echo asset_url(); ?>css/mdb.min.css" rel="stylesheet">
 				<script src="<?php echo asset_url(); ?>js/popper.min.js"></script>
@@ -37,5 +33,5 @@
 
         </head>
         <body>
-
-        	<div class="container">
+        	<div class="wrapper">
+        	

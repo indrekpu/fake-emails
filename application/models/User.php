@@ -127,5 +127,14 @@ class User extends CI_Model
 		return $result;
 	}
 
+	//TODO Refactor to other file.
+	public function addContactMessage($name, $email, $message){
+		$name = $this->db->escape($name);
+		$email = $this->db->escape($email);
+		$message = $this->db->escape($message);
+
+		return $this->db->simple_query("INSERT INTO contact(name, email, message) VALUES($name, $email, $message)");
+	}
+
 }
 ?>

@@ -2,11 +2,40 @@
 body {
  color: #132639;
  font-size:14px;
+ 
+}
+
+footer{
+    position: relative;
+    margin-top: 0px; 
+    height: 200px;
+    clear:both;
+    padding-top:20px;
+}
+
+.container{
+    overflow: auto;
+    padding-bottom: 200px;
+}
+
+.wrapper{
+    min-height: 100%;
 }
 
 .login_label{
     font-size: 14px;
-    padding-left:10px;
+    vertical-align: middle;
+}
+
+#login_form, #register_form{
+    border-style: solid;
+    border-color: #e6e6e6;
+    border-width: 1px;
+    padding: 20px;
+}
+
+#login_form_header, #register_form_header{
+    font-size:16px;
 }
 
 #home_desc_list li {
@@ -34,10 +63,6 @@ body {
     font-size: 20px;
 }
 
-
-#login_form_container{
-    max-width:200px;
-}
 
 /*Here I will create a style for popup, got that from w3schools.com*/
 

@@ -6,10 +6,6 @@ class Login extends CI_Controller{
 		$this->load->helper('url_helper');
 	}
 
-	public function index($data=NULL){
-		
-	}
-
 	public function submit(){
 		$formData = $this->input->post();
 		$email =  $this->input->post("email");
@@ -26,7 +22,7 @@ class Login extends CI_Controller{
 				redirect(base_url(), 'refresh');
 			}
 		} else {
-			$this->session->set_flashdata('success', 'Kontrolli väljasid!');
+			$this->session->set_flashdata('failure', 'Kontrolli väljasid!');
 			redirect(base_url() . 'login', 'refresh');
 		}
 	}
@@ -36,6 +32,7 @@ class Login extends CI_Controller{
 		redirect(base_url(), 'refresh');
 	}
 
+	/* Not used currently. */
 	public function fbLogin(){
 		$fb = new \Facebook\Facebook([
 			'app_id' => '163711774288814',
