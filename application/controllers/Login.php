@@ -32,26 +32,26 @@ class Login extends CI_Controller{
 		redirect(base_url(), 'refresh');
 	}
 
-	/* Not used currently. */
 	public function fbLogin(){
-		$fb = new \Facebook\Facebook([
-			'app_id' => '163711774288814',
-			'app_secret' => '766dba50bd054df89e9b3ca8881bc2f3',
-			'default_graph_version' => 'v2.12' 
-		]);
+		$this->load->model('facebook_model');
+		$result = $this->facebook_model->fbLogin();
+		echo $result;
+	}
 
-		try {
-		  $response = $fb->get('/me', '{access-token}');
-		} catch(\Facebook\Exceptions\FacebookResponseException $e) {
-		  echo 'Graph returned an error: ' . $e->getMessage();
-		  exit;
-		} catch(\Facebook\Exceptions\FacebookSDKException $e) {
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		  exit;
+	public function fbCallback(){
+		$this->load->model('facebook_model');
+		$this->load->model('user');
+		$fbEmail = $this->facebook_model->fbCallback();
+		if($this->user->doesUserExist($fbEmail)){
+			$result = $this->user->loginViaFacebook($fbEmail);
+			if($result){
+				redirect('myaccount', 'refresh');
+			}
+			echo 'Login via facebook Failed!';
+		} else {
+			$this->session->set_flashdata('email', $fbEmail);
+			redirect('register', 'refresh');
 		}
-
-		$me = $response->getGraphUser();
-		echo 'Logged in as ' . $me->getName();
 	}
 
 }

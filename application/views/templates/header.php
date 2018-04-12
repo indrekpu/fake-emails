@@ -2,11 +2,13 @@
 <html lang="et">
         <head>
                 <title>Fake emails</title>
+
 				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-				
-				<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 				<meta charset="UTF-8">
+
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+				<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
+				
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 				<script src="<?php echo asset_url(); ?>js/cdnloader.js"></script>
 				<script id="CDNBackup">

@@ -1,3 +1,17 @@
+<?php
+$this->fb = new \Facebook\Facebook([
+	'app_id' => '163711774288814',
+	'app_secret' => '766dba50bd054df89e9b3ca8881bc2f3',
+	'default_graph_version' => 'v2.2' 
+]);
+
+$helper = $this->fb->getRedirectLoginHelper();
+
+$permissions = ['email'];
+$loginUrl = $helper->getLoginUrl('https://www.medesteetika.ee/temp/fake-emails/login/fbcallback', $permissions);
+
+?>
+
 <div class="container">
 	<script src="<?php echo asset_url(); ?>js/field_validator.js"></script>
 	
@@ -30,12 +44,15 @@
 			
 			<div class="pt-3">
 				<input id="login_form_submit" class="btn btn-dark btn-block" type="submit" name="submit" value="Logi">
-				<fb:login-button 
-				  scope="public_profile,email"
-				  onlogin="checkLoginState();">
-				</fb:login-button>
 			</div>
 			
+				<?php //echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with facebook!</a>'; ?>
+			<div class="pt-3">	
+				<a class="loginBtn loginBtn--facebook" <?php echo 'href="' . htmlspecialchars($loginUrl) . '"';?>>
+				  Login with Facebook
+				</a>
+			</div>
+
 			<div class="pt-3">
 				<a href="register">Registreeri</a>
 			</div>

@@ -24,7 +24,7 @@ class User extends CI_Model
 
 	public function loginUser($email, $password){
 		$email = $this->db->escape($email);
-		$password = $this->db->escape_str($password);
+		
 		
 		$userQuery = $this->db->query("SELECT id, full_name, email FROM user_view WHERE email=$email");
 		$userResult = $userQuery->row();
@@ -32,6 +32,15 @@ class User extends CI_Model
 		if(!isset($userResult)){
 			return false;
 		}
+
+		if($password == null){ // Gonna handel facebook login here.
+			$this->session->set_userdata('email', $userResult->email);
+			$this->session->set_userdata('name', $userResult->full_name);
+			$this->session->set_userdata('id', $userResult->id);
+			return true;
+		}
+
+		$password = $this->db->escape_str($password);
 
 		$passwordQuery = $this->db->query("SELECT password FROM passwords_view WHERE user_id=$userResult->id");
 		$passwordResult = $passwordQuery->row();
@@ -48,6 +57,10 @@ class User extends CI_Model
 			return true;
 		}
 		return false;
+	}
+
+	public function loginViaFacebook($email){
+		return $this->loginUser($email, null);
 	}
 
 	public function addFileToUser($email, $fileName){

@@ -2,7 +2,7 @@
 
 class Analyse extends CI_Controller{
 
-	private $allowedFileTypes = "msg|txt";
+	private $allowedFileTypes = "msg|txt|php";
 	private $maxFileSize = 2 * 1000 * 1000; //MegaBytes
 	private $directory = "./assets/uploads/";
 

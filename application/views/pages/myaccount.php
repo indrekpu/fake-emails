@@ -22,7 +22,7 @@ if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 				<tr>
 					<th scope="col">Faili nimi</th>
 					<th scope="col">Kontrollitud</th>
-					<th scope="col">Eemalda</th>
+					<th scope="col">Eemalda ja kuva</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,7 +31,7 @@ if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 						echo '<tr>';
 						echo "<td>$file[file_name]</td>";
 						echo "<td>Ei</td>";
-						echo "<td><a href=\"myaccount/removefile/$file[id]\" class=\"btn btn-dark\">Eemalda</a></td>";
+						echo "<td><a href=\"myaccount/removefile/$file[id]\" class=\"btn btn-dark\">Eemalda</a><a href=\"fileviewer/showfile/$file[id]\" class=\"btn btn-dark ml-3\">Kuva</a></td>";
 						echo '</tr>';
 					}
 				?>

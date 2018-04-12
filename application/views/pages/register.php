@@ -23,9 +23,10 @@
 			<div class="pt-3">
 				<input type="text" class="form-control" name="full_name" placeholder="Nimi" id="form_name">
 			</div>
+			
 
 			<div class="pt-3">
-				<input type="text" class="form-control" name="email" placeholder="Email" id="form_email">
+				<input type="text" class="form-control" name="email" placeholder="Email" id="form_email" <?php if($this->session->flashdata('email') != null) { echo "value=\"" .  $this->session->flashdata('email') . '"'; } ?>>
 			</div>
 
 			<div class="pt-3">
@@ -45,6 +46,10 @@
 			<div class="popup pt-3" onclick="kasutamisTingimused()">Kasutamistingimusi loe siit!
 			  <span class="popuptext" id="kasutamisPopUp">Kasutades fake-emailsi nõustud kasutustingimustega. Keskkonda üleslaetud e-maile kasutatakse ainult saatmiskuupäeva ja IP-aadressi analüüsiks. Nende sisu ei salvestata, ega kasutata millekski muuks.</span>
 			</div> 
+
+			<div id="reg_form_message_container">
+				
+			</div>
 
 		</form>
 	</div>
