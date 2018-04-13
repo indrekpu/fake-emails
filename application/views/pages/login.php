@@ -8,7 +8,7 @@ $this->fb = new \Facebook\Facebook([
 $helper = $this->fb->getRedirectLoginHelper();
 
 $permissions = ['email'];
-$loginUrl = $helper->getLoginUrl('https://www.medesteetika.ee/temp/fake-emails/login/fbcallback', $permissions);
+$loginUrl = $helper->getLoginUrl(base_url() . 'login/fbcallback', $permissions);
 
 ?>
 

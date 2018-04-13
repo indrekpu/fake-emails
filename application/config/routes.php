@@ -51,5 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['statistics'] = 'statistics/view/';
 $route['myaccount'] = 'myaccount/view/';
+$route['about'] = 'about/view/';
+$route['analyse'] = 'analyse/view/';
+$route['contact'] = 'contact/view/';
+$route['login'] = 'login/view/';
+$route['privacypolicy'] = 'privacypolicy/view/';
+$route['register'] = 'register/view/';
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1';

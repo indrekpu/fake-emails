@@ -32,6 +32,10 @@ footer{
     min-height: 100%;
 }
 
+#file_viewer_panel{
+  display: none;
+}
+
 .login_label{
     font-size: 14px;
     vertical-align: middle;

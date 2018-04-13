@@ -8,7 +8,9 @@ class Pages extends CI_Controller {
         		$this->load->model('data_request');
 
         		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
-        		$this->statistics_model->insertStatistics($ipInformation->country);
+        		if(isset($ipInformation->country)){
+        			$this->statistics_model->insertStatistics($ipInformation->country);
+        		}
 
         		$this->session->set_userdata('statistics', 'true');
         	}
@@ -19,9 +21,15 @@ class Pages extends CI_Controller {
 				show_404();
 			}
 
+			$headerData = array();//Title, language, description, keywords
+	    	$headerData['title'] = "Kodu";
+	    	$headerData['lang'] = "et";
+			$headerData['description'] = "Koduleht, pealeht";
+			$headerData['keywords'] = "home page, koduleht, pealeht, esileht, fake-emails, e-kirjade analüüs, analüüsimine";
+
 			$data['title'] = ucfirst($page); // Capitalize the first letter
 
-			$this->load->view('templates/header', $data);
+			$this->load->view('templates/header', $headerData);
 			if($this->session->userdata('name') != null){
 				$this->load->view('templates/navbar-logged', $data);
 			} else {

@@ -1,9 +1,37 @@
 <?php
 class Register extends CI_Controller{
 
-	public function index($data = NULL){
-		
-	}
+	public function view(){
+
+		if(!isset($this->session->statistics)){
+    		$this->load->model('statistics_model');
+    		$this->load->model('data_request');
+
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		if(isset($ipInformation->country)){
+    			$this->statistics_model->insertStatistics($ipInformation->country);
+    		}
+
+    		$this->session->set_userdata('statistics', 'true');
+    	}
+
+    	$headerData = array();//Title, language, description, keywords
+    	$headerData['title'] = "Registreermine";
+    	$headerData['lang'] = "et";
+		$headerData['description'] = "Lehele registreermine";
+		$headerData['keywords'] = "register, registreermine, registreeri, facebook";
+    	
+
+
+		$this->load->view('templates/header', $headerData);
+		if($this->session->userdata('name') != null){
+			$this->load->view('templates/navbar-logged');
+		} else {
+			$this->load->view('templates/navbar-not-logged');
+		}
+		$this->load->view('pages/register');
+		$this->load->view('templates/footer');
+	}	
 
 	public function submit(){
 		$this->load->model('user');

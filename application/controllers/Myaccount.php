@@ -4,17 +4,41 @@ class Myaccount extends CI_Controller {
 	
 	public function view(){
 		$this->load->model('user');
+		$this->load->model('file_handler');
 
 		if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 			$this->session->set_userdata('redirect', 'myaccount');
 			redirect(base_url() . "login", 'refresh');
 		}
 
+		$filesContents = $this->file_handler->getUserAllFileContents($this->session->id);
+		
 		$data = array();
+		$data['files_data'] = $filesContents;
+		$data['json_data'] = json_encode($filesContents);
 		$data['user_files'] = $this->user->getUserFiles($this->session->id);
 		$data['user_info'] =  $this->user->getUserInfo($this->session->id); 
 
-		$this->load->view('templates/header');
+		if(!isset($this->session->statistics)){
+    		$this->load->model('statistics_model');
+    		$this->load->model('data_request');
+
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		if(isset($ipInformation->country)){
+    			$this->statistics_model->insertStatistics($ipInformation->country);
+    		}
+
+    		$this->session->set_userdata('statistics', 'true');
+    	}
+
+    	$headerData = array();//Title, language, description, keywords
+    	$headerData['title'] = "Minu kasutaja";
+    	$headerData['lang'] = "et";
+		$headerData['description'] = "Kasutaja kohta informatsioon ja kasutaja e-kirjad";
+		$headerData['keywords'] = "info, nimi, email, e-kiri, kirjad, riik";
+
+
+		$this->load->view('templates/header', $headerData);
 		if($this->session->userdata('name') != null){
 			$this->load->view('templates/navbar-logged');
 		} else {

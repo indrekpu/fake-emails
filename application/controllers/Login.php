@@ -6,6 +6,38 @@ class Login extends CI_Controller{
 		$this->load->helper('url_helper');
 	}
 
+	public function view(){
+
+		if(!isset($this->session->statistics)){
+    		$this->load->model('statistics_model');
+    		$this->load->model('data_request');
+
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		if(isset($ipInformation->country)){
+    			$this->statistics_model->insertStatistics($ipInformation->country);
+    		}
+
+    		$this->session->set_userdata('statistics', 'true');
+    	}
+
+    	$headerData = array();//Title, language, description, keywords
+    	$headerData['title'] = "Sisse logimine";
+    	$headerData['lang'] = "et";
+		$headerData['description'] = "Logimise võimalus ning registreerimine";
+		$headerData['keywords'] = "login, logimine, registreerimine, log in, facebook";
+    	
+
+
+		$this->load->view('templates/header', $headerData);
+		if($this->session->userdata('name') != null){
+			$this->load->view('templates/navbar-logged');
+		} else {
+			$this->load->view('templates/navbar-not-logged');
+		}
+		$this->load->view('pages/login');
+		$this->load->view('templates/footer');
+	}	
+
 	public function submit(){
 		$formData = $this->input->post();
 		$email =  $this->input->post("email");

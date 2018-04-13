@@ -17,8 +17,27 @@ class Statistics extends CI_Controller{
 		$data['platform_labels'] = array_keys($platformArray);
 		$data['platform_values'] = array_values($platformArray);
 
+		if(!isset($this->session->statistics)){
+    		$this->load->model('statistics_model');
+    		$this->load->model('data_request');
 
-		$this->load->view('templates/header');
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		if(isset($ipInformation->country)){
+    			$this->statistics_model->insertStatistics($ipInformation->country);
+    		}
+
+    		$this->session->set_userdata('statistics', 'true');
+    	}
+
+    	$headerData = array();//Title, language, description, keywords
+    	$headerData['title'] = "Statistika";
+    	$headerData['lang'] = "et";
+		$headerData['description'] = "Kasutajate statistika: ip aadress, riik, brauser, platform, operatsioonisüsteem";
+		$headerData['keywords'] = "ip, aadress, riik, brauser, platform, operatsioonisüsteem, os, statistika, kasutaja";
+
+
+
+		$this->load->view('templates/header', $headerData);
 		if($this->session->userdata('name') != null){
 			$this->load->view('templates/navbar-logged');
 		} else {

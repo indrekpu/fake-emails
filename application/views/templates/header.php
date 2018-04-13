@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="<?php echo $lang; ?>">
         <head>
-                <title>Fake emails</title>
+                <title><?php echo $title; ?></title>
 
+                <meta name="description" content="<?php echo $description; ?>">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<meta charset="UTF-8">
+				<meta NAME="robots" CONTENT="index, follow">
+				<meta name="keywords" content="<?php echo $keywords; ?>">
 
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 				<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
