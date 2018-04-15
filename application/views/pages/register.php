@@ -11,6 +11,7 @@
 	  		echo "<div class=\"alert alert-danger\"><strong>Hoiatus!</strong> ";
 			echo $this->session->flashdata('failure');
 			echo "</div>";
+			
 	  	}
 	?>
 	

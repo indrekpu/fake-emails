@@ -49,6 +49,9 @@
 	            // code for IE6, IE5
 	            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	        }
+
+	    
+
 	        xmlhttp.onreadystatechange = function() {
 	            if (this.readyState == 4 && this.status == 200) {
 	            	var result = "";
@@ -56,17 +59,27 @@
 	            	
 	            	for(var i = 0; i < objLength(jsonData); i++){
 	            		result += "<tr>";
+<<<<<<< HEAD
 	            		for(var key in jsonData[i]){
 	            			result += "<td>" + jsonData[i][key] + "</td>";
 	            		}
 	            		result+= "</tr>";
+=======
+	            		for(j = 0; j < temp.length; j++){
+	            			result += "<td>" + temp[j] + "</td>";
+	            			setTimeout(result, 50000);
+
+	            		}
+	            		result += "</tr>";
+
+>>>>>>> 549bafd712fdbdd536558e384feea46598f96979
 	            	}
 
 	                document.getElementById("ajaxResponse").innerHTML = result;
 	                //$("#tableWrapper").slideDown("slow");
 	            }
 	        };
-	        xmlhttp.open("GET","<?php echo base_url() . "statistics/statisticstable" ?>",true);
+
 	        xmlhttp.send();
 	     
 	    });
