@@ -52,17 +52,18 @@
 	        xmlhttp.onreadystatechange = function() {
 	            if (this.readyState == 4 && this.status == 200) {
 	            	var result = "";
-	            	var byTime = this.responseText.split("|");
-	            	for(i = 0; i < byTime.length; i++){
-	            		var temp = byTime[i].split(";");
+	            	var jsonData = JSON.parse(this.responseText);
+	            	
+	            	for(var i = 0; i < objLength(jsonData); i++){
 	            		result += "<tr>";
-	            		for(j = 0; j < temp.length; j++){
-	            			result += "<td>" + temp[j] + "</td>";
+	            		for(var key in jsonData[i]){
+	            			result += "<td>" + jsonData[i][key] + "</td>";
 	            		}
-	            		result += "</tr>";
+	            		result+= "</tr>";
 	            	}
+
 	                document.getElementById("ajaxResponse").innerHTML = result;
-	                $("#tableWrapper").slideDown("slow");
+	                //$("#tableWrapper").slideDown("slow");
 	            }
 	        };
 	        xmlhttp.open("GET","<?php echo base_url() . "statistics/statisticstable" ?>",true);
@@ -70,4 +71,14 @@
 	     
 	    });
 	});
+
+	function objLength(obj){
+	  var i=0;
+	  for (var x in obj){
+	    if(obj.hasOwnProperty(x)){
+	      i++;
+	    }
+	  } 
+	  return i;
+	}
 </script>

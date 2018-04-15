@@ -50,9 +50,14 @@ class Statistics extends CI_Controller{
 	public function statisticsTable(){
 		$this->load->model('statistics_model');
 		$result = $this->statistics_model->getTabel();
+		$jsonArray = array();
 		foreach($result as $row){
-			echo "$row->ip;$row->country;$row->browser;$row->platform;$row->time|";
+			//$rowArray = array($row->ip, $row->country,$row->browser, $row->platform, $row->time,);
+			$jsonArray[] = $row;
 		}
+		$jsonArray = json_encode($jsonArray, JSON_FORCE_OBJECT);
+		print_r($jsonArray);
+
 	}
 
 }
