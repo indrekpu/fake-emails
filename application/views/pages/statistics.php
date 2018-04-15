@@ -49,6 +49,9 @@
 	            // code for IE6, IE5
 	            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	        }
+
+	    
+
 	        xmlhttp.onreadystatechange = function() {
 	            if (this.readyState == 4 && this.status == 200) {
 	            	var result = "";
@@ -58,14 +61,20 @@
 	            		result += "<tr>";
 	            		for(j = 0; j < temp.length; j++){
 	            			result += "<td>" + temp[j] + "</td>";
+	            			setTimeout(result, 50000);
+
 	            		}
 	            		result += "</tr>";
+
 	            	}
 	                document.getElementById("ajaxResponse").innerHTML = result;
 	                $("#tableWrapper").slideDown("slow");
 	            }
 	        };
-	        xmlhttp.open("GET","<?php echo base_url() . "statistics/statisticstable" ?>",true);
+
+	       
+	        setInterval(xmlhttp.open("GET","<?php echo base_url() . "statistics/statisticstable" ?>",true), 50000);
+   
 	        xmlhttp.send();
 	     
 	    });

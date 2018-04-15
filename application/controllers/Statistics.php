@@ -53,6 +53,7 @@ class Statistics extends CI_Controller{
 		foreach($result as $row){
 			echo "$row->ip;$row->country;$row->browser;$row->platform;$row->time|";
 		}
+		//$this->load->view('msgrv', $result);
 	}
 
 }

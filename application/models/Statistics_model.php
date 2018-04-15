@@ -17,6 +17,7 @@ class Statistics_model extends CI_Model {
 		
 
 		$result = $this->db->simple_query("INSERT INTO statistics(ip, country, browser, platform) VALUES($ip, $country, $browser, $platform)");
+		
 	}
 
 	public function getTabel(){

@@ -32,3 +32,44 @@
 		}
 	?></p>
 </div>
+
+ <div id="map" style="width:100%;height:600px;"></div>
+
+<?php
+
+$ip_address = $_SERVER['REMOTE_ADDR'];
+$arr_location = file_get_contents(("http://freegeoip.net/json/$ip_address"));
+$json = json_decode($arr_location,true); 
+
+
+
+$latitude = $json['latitude'] . PHP_EOL;
+$longitude = $json['longitude'] . PHP_EOL;
+
+
+
+
+?>
+
+
+    <script>
+      function initMap() {
+        var uluru = {lat: <?php echo $latitude; ?>, lng:<?php echo $longitude; ?>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABaqlhzO7qecXtqVbB9Aw4SnmRb6cnp5g&callback=initMap">
+    </script>
+
+

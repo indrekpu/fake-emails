@@ -197,3 +197,7 @@ Author: Davide Rizzo
 .loginBtn--google:focus {
   background: #E74B37;
 }
+
+ .map {
+        height: 100%;
+      }
