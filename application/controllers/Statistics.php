@@ -55,12 +55,9 @@ class Statistics extends CI_Controller{
 			//$rowArray = array($row->ip, $row->country,$row->browser, $row->platform, $row->time,);
 			$jsonArray[] = $row;
 		}
-<<<<<<< HEAD
+
 		$jsonArray = json_encode($jsonArray, JSON_FORCE_OBJECT);
 		print_r($jsonArray);
-
-=======
->>>>>>> 549bafd712fdbdd536558e384feea46598f96979
 	}
 
 }

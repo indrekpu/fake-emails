@@ -29,39 +29,27 @@ class Facebook_model extends CI_Model {
 		  $accessToken = $helper->getAccessToken();
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 		  // When Graph returns an error
-		  echo 'Graph returned an error: ' . $e->getMessage();
 		  return null;
 		} catch(Facebook\Exceptions\FacebookSDKException $e) {
 		  // When validation fails or other local issues
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
 		  return null;
 		}
 
 		if (! isset($accessToken)) {
 		  if ($helper->getError()) {
 		    header('HTTP/1.0 401 Unauthorized');
-		    echo "Error: " . $helper->getError() . "\n";
-		    echo "Error Code: " . $helper->getErrorCode() . "\n";
-		    echo "Error Reason: " . $helper->getErrorReason() . "\n";
-		    echo "Error Description: " . $helper->getErrorDescription() . "\n";
 		  } else {
 		    header('HTTP/1.0 400 Bad Request');
-		    echo 'Bad request';
 		  }
 		  return null;
 		}
 
 		// Logged in
-		echo '<h3>Access Token</h3>';
-		var_dump($accessToken->getValue());
-
 		// The OAuth 2.0 client handler helps us manage access tokens
 		$oAuth2Client = $this->fb->getOAuth2Client();
 
 		// Get the access token metadata from /debug_token
 		$tokenMetadata = $oAuth2Client->debugToken($accessToken);
-		echo '<h3>Metadata</h3>';
-		var_dump($tokenMetadata);
 
 		// Validation (these will throw FacebookSDKException's when they fail)
 		$tokenMetadata->validateAppId('163711774288814'); // Replace {app-id} with your app id
@@ -74,12 +62,8 @@ class Facebook_model extends CI_Model {
 		  try {
 		    $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 		  } catch (Facebook\Exceptions\FacebookSDKException $e) {
-		    echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
 		    return null;
 		  }
-
-		  echo '<h3>Long-lived</h3>';
-		  var_dump($accessToken->getValue());
 		}
 
 		$_SESSION['fb_access_token'] = (string) $accessToken;
@@ -93,10 +77,8 @@ class Facebook_model extends CI_Model {
 		  $userNode = $response->getGraphUser();
 		  return $userNode->getField('email');
 		} catch(FacebookExceptionsFacebookResponseException $e) {
-		  echo 'Graph returned an error: ' . $e->getMessage();
 		  return null;
 		} catch(FacebookExceptionsFacebookSDKException $e) {
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
 		  return null;
 		}
 		//$graphNode = $response->getGraphNode();

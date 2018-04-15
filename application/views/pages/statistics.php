@@ -59,27 +59,23 @@
 	            	
 	            	for(var i = 0; i < objLength(jsonData); i++){
 	            		result += "<tr>";
-<<<<<<< HEAD
+
 	            		for(var key in jsonData[i]){
 	            			result += "<td>" + jsonData[i][key] + "</td>";
 	            		}
 	            		result+= "</tr>";
-=======
-	            		for(j = 0; j < temp.length; j++){
-	            			result += "<td>" + temp[j] + "</td>";
-	            			setTimeout(result, 50000);
 
-	            		}
-	            		result += "</tr>";
 
->>>>>>> 549bafd712fdbdd536558e384feea46598f96979
 	            	}
-
+	            	setTimeout(result, 50000); //DATA PUSH TIMEOUT
 	                document.getElementById("ajaxResponse").innerHTML = result;
 	                //$("#tableWrapper").slideDown("slow");
 	            }
 	        };
 
+	       
+	        setInterval(xmlhttp.open("GET","<?php echo base_url() . "statistics/statisticstable" ?>",true), 50000);
+   
 	        xmlhttp.send();
 	     
 	    });

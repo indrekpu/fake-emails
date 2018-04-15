@@ -32,7 +32,27 @@
 
 		</div>
 		<div class="col-lg-6">
-			<!-- TODO: Siia sobiks kaart -->
+			 <div id="map" style="width:100%;height:300px;"></div>
+
+			  <script>
+			      function initMap() {
+			        var uluru = {lat: 58.378251, lng: 26.714637};
+
+			        var map = new google.maps.Map(document.getElementById('map'), {
+			          zoom: 12,
+			          center: uluru
+			        });
+			        var marker = new google.maps.Marker({
+			          position: uluru,
+			          map: map
+			        });
+			      }
+			    </script>
+
+
+			    <script async defer
+			    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABaqlhzO7qecXtqVbB9Aw4SnmRb6cnp5g&callback=initMap">
+			    </script>
 		</div>
 	</div>
 
@@ -45,17 +65,17 @@
     
             <!-- Name input-->
             <div class="form-group pt-3">
-              <label class="col-md-3 control-label" for="name">Nimi</label>
+              <label class="col-md-3 control-label">Nimi</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Nimi" class="form-control" id="contact_form_name">
+                <input name="name" type="text" placeholder="Nimi" class="form-control" id="contact_form_name">
               </div>
             </div>
     
             <!-- Email input-->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="email">Email</label>
+              <label class="col-md-3 control-label">Email</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email" class="form-control" id="contact_form_email">
+                <input name="email" type="text" placeholder="Email" class="form-control" id="contact_form_email">
               </div>
             </div>
     
