@@ -33,6 +33,11 @@ class File_handler extends CI_Model {
 		return $fileContents;
 	}
 
+	public function getDataByParameter($fileContents, $param){
+		preg_match("%$param: .+%", $fileContents, $match);
+		return $match;
+	}
+
 }
 
 ?>

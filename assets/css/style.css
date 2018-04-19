@@ -77,6 +77,12 @@ footer{
     font-size: 20px;
 }
 
+#smart_id_button {
+   background: url("./img/smartid_login_btn") no-repeat scroll 0 0 transparent;
+   width: 88px;
+   height:31px;
+}
+
 
 /*Here I will create a style for popup, got that from w3schools.com*/
 

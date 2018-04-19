@@ -59,7 +59,7 @@ class User extends CI_Model
 		return false;
 	}
 
-	public function loginViaFacebook($email){
+	public function loginViaEmail($email){
 		return $this->loginUser($email, null);
 	}
 

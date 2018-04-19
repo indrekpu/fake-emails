@@ -75,7 +75,7 @@ class Login extends CI_Controller{
 		$this->load->model('user');
 		$fbEmail = $this->facebook_model->fbCallback();
 		if($this->user->doesUserExist($fbEmail)){
-			$result = $this->user->loginViaFacebook($fbEmail);
+			$result = $this->user->loginViaEmail($fbEmail);
 			if($result){
 				redirect('myaccount', 'refresh');
 			}
@@ -84,6 +84,33 @@ class Login extends CI_Controller{
 			$this->session->set_flashdata('email', $fbEmail);
 			redirect('register', 'refresh');
 		}
+	}
+
+	public function smartLogin(){
+		$this->load->model('smartid_model');
+		$this->smartid_model->login();
+	}
+
+	public function smartCallback(){
+		$this->load->model('smartid_model');
+		$this->load->model('user');
+		$smartEmail = $this->smartid_model->getCallbackEmail();
+
+		if($smartEmail != null){
+			if($this->user->doesUserExist($smartEmail)){
+				$loginResult = $this->user->loginViaEmail($smartEmail);
+				if($loginResult){
+					redirect('myaccount', 'refresh');
+				}
+			} else {
+				$this->session->set_flashdata('email', $smartEmail);
+				redirect('register', 'refresh');
+			}
+		}
+	}
+
+	public function smart(){
+		 echo '<a id="smart_id_button" href="' . base_url() . "login/smartlogin" .  '">Login with smartID</a>';
 	}
 
 }
