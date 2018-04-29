@@ -45,12 +45,14 @@ $loginUrl = $helper->getLoginUrl(base_url() . 'login/fbcallback', $permissions);
 			<div class="pt-3">
 				<input id="login_form_submit" class="btn btn-dark btn-block" type="submit" name="submit" value="Logi">
 			</div>
-			
-				<?php //echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with facebook!</a>'; ?>
+
 			<div class="pt-3">	
 				<a class="loginBtn loginBtn--facebook" <?php echo 'href="' . htmlspecialchars($loginUrl) . '"';?>>
 				  Login with Facebook
 				</a>
+				<div class="mt-3 mb-3">
+					<?php echo '<a id="smart_id_button" href="' . base_url() . "login/smartlogin" .  '"></a>'; ?>
+				</div>
 			</div>
 
 			<div class="pt-3">

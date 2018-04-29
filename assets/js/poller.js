@@ -8,7 +8,7 @@ function waitForMsg(){
      When it complete (or errors)*/
     $.ajax({
         type: "GET",
-        url: "http://localhost/fake-emails/statistics",
+        url: "https://www.medesteetika.ee/fake-emails/statistics",
 
         async: true, /* If set to non-async, browser shows page as "Loading.."*/
         cache: false,

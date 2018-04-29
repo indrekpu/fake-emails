@@ -2,7 +2,7 @@
 
 class Analyse extends CI_Controller{
 
-	private $allowedFileTypes = "msg|txt";
+	private $allowedFileTypes = "*";
 	private $maxFileSize = 2 * 1000 * 1000; //MegaBytes
 	private $directory = "./assets/uploads/";
 
@@ -13,10 +13,10 @@ class Analyse extends CI_Controller{
     		$this->load->model('statistics_model');
     		$this->load->model('data_request');
 
-    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		/*$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
     		if(isset($ipInformation->country)){
     			$this->statistics_model->insertStatistics($ipInformation->country);
-    		}
+    		}*/
 
     		$this->session->set_userdata('statistics', 'true');
     	}
@@ -69,6 +69,24 @@ class Analyse extends CI_Controller{
 			redirect(base_url() . "analyse", 'refresh');
 		}
 	}
+
+	public function fileAnalyse($fileName){
+		$this->load->model('file_handler');
+
+		$fileContents = $this->file_handler->getFileContents('original_msg.txt', $this->session->id);
+		$threadIndexValue = $this->file_handler->getDataByParameter($fileContents, 'Thread-Index');
+		$dateValue = $this->file_handler->getDataByParameter($fileContents, 'Date');
+
+		$pythonLocation = "C:\Python\python.exe"; 
+		$pythonCommand = escapeshellcmd("C:/xampp/htdocs/fake-emails/assets/python/thread.py $threadIndexValue");
+		exec("$pythonLocation $pythonCommand", $output);
+
+		$threadIndexDate = date_parse($output[0]);
+		$displayedDate = date_parse($dateValue);
+
+		print_r($threadIndexDate);
+	}
+
 
 }
 

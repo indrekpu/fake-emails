@@ -31,7 +31,8 @@ if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 						echo '<tr>\n';
 						echo "<td>$file[file_name]</td>\n";
 						echo "<td>Ei</td>\n";
-						echo "<td><a href=\"myaccount/removefile/$file[id]\" class=\"btn btn-dark\">Eemalda</a><button onclick=\"showFile('$file[file_name]')\" class=\"btn btn-dark ml-3\">Kuva</button></td>\n";
+						echo "<td><a href=\"myaccount/removefile/$file[id]\" class=\"btn btn-danger\">Eemalda</a><button onclick=\"showFile('$file[file_name]')\" class=\"btn btn-info ml-3\">Kuva</button></td>\n";
+						echo "<td><a href=\"analyse/fileAnalyse/$file[file_name]\" class=\"btn btn-success\">Analüüsi</a></td>";
 						echo '</tr>';
 					}
 				?>

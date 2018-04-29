@@ -24,7 +24,7 @@
 				if($res == 1){
 					echo 'Fail serveri laetud!';
 				} else if($res == 0){
-					echo 'Error';
+					echo 'Error: ' . $res;
 				} else {
 					echo $res . "<br>";
 				}

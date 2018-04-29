@@ -78,9 +78,13 @@ footer{
 }
 
 #smart_id_button {
-   background: url("./img/smartid_login_btn") no-repeat scroll 0 0 transparent;
-   width: 88px;
-   height:31px;
+   background: url("../img/smartid_login_btn.png") no-repeat scroll 0 0 transparent;
+
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0px 44px 18px 44px;
+  border: none;
 }
 
 

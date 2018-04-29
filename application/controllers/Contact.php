@@ -7,10 +7,10 @@ class Contact extends CI_Controller{
     		$this->load->model('statistics_model');
     		$this->load->model('data_request');
 
-    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
+    		/*$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
     		if(isset($ipInformation->country)){
     			$this->statistics_model->insertStatistics($ipInformation->country);
-    		}
+    		}*/
 
     		$this->session->set_userdata('statistics', 'true');
     	}
