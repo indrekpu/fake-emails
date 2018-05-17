@@ -3,17 +3,18 @@ class Pages extends CI_Controller {
 
         public function view($page = 'home')
         {
-        	if(!isset($this->session->statistics)){
-        		$this->load->model('statistics_model');
-        		$this->load->model('data_request');
+			if(!isset($this->session->statistics)){
+	    		$this->load->model('statistics_model');
+	    		$this->load->model('data_request');
+	    		
+	    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
 
-        		/*$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
-    		if(isset($ipInformation->country)){
-    			$this->statistics_model->insertStatistics($ipInformation->country);
-    		}*/
+	    		if(isset($ipInformation['country_name']) && $this->statistics_model->getIp() != "127.0.0.1"){
+	    			$this->statistics_model->insertStatistics($ipInformation['country_name']);
+	    		}
 
-        		$this->session->set_userdata('statistics', 'true');
-        	}
+	    		$this->session->set_userdata('statistics', 'true');
+	    	}
 
 			if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
 			{

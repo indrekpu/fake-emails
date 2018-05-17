@@ -12,11 +12,12 @@ class Analyse extends CI_Controller{
 		if(!isset($this->session->statistics)){
     		$this->load->model('statistics_model');
     		$this->load->model('data_request');
+    		
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
 
-    		/*$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
-    		if(isset($ipInformation->country)){
-    			$this->statistics_model->insertStatistics($ipInformation->country);
-    		}*/
+    		if(isset($ipInformation['country_name']) && $this->statistics_model->getIp() != "127.0.0.1"){
+    			$this->statistics_model->insertStatistics($ipInformation['country_name']);
+    		}
 
     		$this->session->set_userdata('statistics', 'true');
     	}
@@ -79,42 +80,69 @@ class Analyse extends CI_Controller{
 
 		$originatingIp = $this->file_handler->getDataByParameter($fileContents, 'x-originating-ip');
 		
-		preg_match('/\[(.*?)\]/', $originatingIp, $match);
-		$originatingIp = $match[1];
+		$data = array();
 
-		$arr_location = file_get_contents(("http://freegeoip.net/json/$originatingIp"));
-		$json = json_decode($arr_location,true); 
+		preg_match('/\[(.*?)\]/', $originatingIp, $match);
+		if(isset($match[1])){
+			$originatingIp = $match[1];
+			$arr_location = file_get_contents(("http://freegeoip.net/json/$originatingIp"));
+			$json = json_decode($arr_location,true); 
+			$data['originating_ip'] = $originatingIp;
+			$data['originating_ip_country'] = $json['country_name'];
+			$data['originating_ip_city'] = $json['city'];
+			$data['originating_ip_latitude'] = $json['latitude'];
+			$data['originating_ip_longitude'] = $json['longitude'];
+		} else {
+			$data['originating_ip'] = "-";
+			$data['originating_ip_country'] = "-";
+			$data['originating_ip_city'] = "-";
+			$data['originating_ip_latitude'] = "0";
+			$data['originating_ip_longitude'] = "0";
+		}
+
+		
+
+		
 
 		if(empty($threadIndexValue)){
-			echo "threadIndexValue is empty";
-		} else if(empty($dateValue)){
+			$data['thread_index_date'] = "Ei leidnud thread-index välja!";
 
-		}
-
-
-		$threadIndexDecoded = $this->decodeThreadIndex($threadIndexValue);
-		$dateValue = trim($dateValue);
-
-		$displayedDate = date_create_from_format("D, d M Y H:i:s O", $dateValue);
-		$threadIndexDate = date_create_from_format("Y-m-d H:i:s.u", $threadIndexDecoded, new DateTimeZone('+0000'));
-
-		$dateDiff = date_diff($threadIndexDate, $displayedDate);
-		
-		$data = array();
-		$data['thread_index_date'] = $threadIndexDate->format('d/m/Y H:i:s');
-		$data['displayed_date'] = $displayedDate->format('d/m/Y H:i:s');
-		$data['date_diff'] = $dateDiff->format('%d päeva %h tundi %i minutit %s sekundit');
-		$data['originating_ip'] = $originatingIp;
-		$data['originating_ip_country'] = $json['country_name'];
-		$data['originating_ip_city'] = $json['city'];
-		$data['originating_ip_latitude'] = $json['latitude'];
-		$data['originating_ip_longitude'] = $json['longitude'];
-
-		if($dateDiff->y == 0 || $dateDiff->m == 0 || $dateDiff->d == 0 || $dateDiff->h == 0 || $dateDiff->i <= 5){
-			$data['is_faked_time'] = false;
 		} else {
-			$data['is_faked_time'] = true;
+			$threadIndexDecoded = $this->decodeThreadIndex($threadIndexValue);
+			$threadIndexDate = date_create_from_format("Y-m-d H:i:s.u", $threadIndexDecoded, new DateTimeZone('+0000'));
+			$data['thread_index_date'] = $threadIndexDate->format('d/m/Y H:i:s');
 		}
+
+		if(empty($dateValue)){
+			$data['displayed_date'] = "Ei leidnud kuupäeva välja!";
+		} else {
+			$dateValue = trim($dateValue);
+			$displayedDate = date_create_from_format("D, d M Y H:i:s O", $dateValue);
+			$data['displayed_date'] = $displayedDate->format('d/m/Y H:i:s');
+		}
+		
+		if(!empty($dateValue) && !empty($threadIndexValue)){
+			$dateDiff = date_diff($threadIndexDate, $displayedDate);
+			$data['date_diff'] = $dateDiff->format('%d päeva %h tundi %i minutit %s sekundit');
+			if($dateDiff->y == 0 && $dateDiff->m == 0 && $dateDiff->d == 0 && $dateDiff->h == 0 && $dateDiff->i <= 5){
+				$data['is_faked_time'] = "false";
+			} else {
+				$data['is_faked_time'] = "true";
+			}
+		} else {
+			$data['date_diff'] = "-";
+			$data['is_faked_time'] = "Unknown";
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
 
 
 		

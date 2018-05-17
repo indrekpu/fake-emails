@@ -15,13 +15,16 @@ class Statistics_model extends CI_Model {
 		$ip = $this->db->escape($this->getIp());
 		$country = $this->db->escape($country);
 		
-
-		$result = $this->db->simple_query("INSERT INTO statistics(ip, country, browser, platform) VALUES($ip, $country, $browser, $platform)");
+		$ipQuery = $this->db->query("SELECT ip FROM statistics WHERE ip=$ip");
+		$ipResult = $ipQuery->row();
 		
+		if($ipResult != null){
+			$result = $this->db->simple_query("INSERT INTO statistics(ip, country, browser, platform) VALUES($ip, $country, $browser, $platform)");
+		}
 	}
 
 	public function getTabel(){
-		$query = $this->db->query("SELECT ip, country, browser, platform, time FROM statistics ORDER BY time");
+		$query = $this->db->query("SELECT ip, country, browser, platform, time FROM statistics ORDER BY time DESC");
 		return $query->result();
 	}
 

@@ -1,17 +1,18 @@
 <?php
 
-class About extends CI_Controller {
+class Home extends CI_Controller {
 	
 	public function view(){
-
+		echo "In view";
 		if(!isset($this->session->statistics)){
     		$this->load->model('statistics_model');
     		$this->load->model('data_request');
+    		
+    		$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
 
-    		/*$ipInformation = $this->data_request->getUrlContents($this->statistics_model->getIp());
-    		if(isset($ipInformation->country)){
-    			$this->statistics_model->insertStatistics($ipInformation->country);
-    		}*/
+    		if(isset($ipInformation['country_name']) && $this->statistics_model->getIp() != "127.0.0.1"){
+    			$this->statistics_model->insertStatistics($ipInformation['country_name']);
+    		}
 
     		$this->session->set_userdata('statistics', 'true');
     	}

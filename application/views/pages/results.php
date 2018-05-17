@@ -1,57 +1,67 @@
 <div class="container">
 
 	<div id="data_panel">
-		<h3>E-kirja informatsioon</h3>
+		<h2>E-kirja informatsioon</h2>
 		<div class="row pt-3">
 			<div class="col-sm">
 				<div class="row pt-1">
 					<div class="col-sm">
-						<span>Kuvatav aeg:</span>
+						<span class="lead">E-kirjas kuvatav aeg:</span>
 					</div>
 					<div class="col-sm">
-						<span><?php echo $thread_index_date;?></span>
-					</div>
-				</div>
-				<div class="row pt-1">
-					<div class="col-sm">
-						<span>Dekodeeritud aeg:</span>
-					</div>
-					<div class="col-sm">
-						<span><?php echo $displayed_date;?></span>
+						<span class="lead"><?php echo $thread_index_date;?></span>
 					</div>
 				</div>
 				<div class="row pt-1">
 					<div class="col-sm">
-						<span>Ajavahemik:</span>
+						<span class="lead">Tegelik aeg:</span>
 					</div>
 					<div class="col-sm">
-						<span><?php echo $date_diff;?></span>
-					</div>
-				</div>
-				<div class="row pt-1">
-					<div class="col-sm">
-						<span>Riik:</span>
-					</div>
-					<div class="col-sm">
-						<span><?php echo $originating_ip_country;?></span>
+						<span class="lead"><?php echo $displayed_date;?></span>
 					</div>
 				</div>
 				<div class="row pt-1">
 					<div class="col-sm">
-						<span>Linn:</span>
+						<span class="lead">Ajavahemik:</span>
 					</div>
 					<div class="col-sm">
-						<span><?php echo $originating_ip_city;?></span>
+						<span class="lead"><?php echo $date_diff;?></span>
+					</div>
+				</div>
+				<div class="row pt-1">
+					<div class="col-sm">
+						<span class="lead">Riik:</span>
+					</div>
+					<div class="col-sm">
+						<span class="lead"><?php echo $originating_ip_country;?></span>
+					</div>
+				</div>
+				<div class="row pt-1">
+					<div class="col-sm">
+						<span class="lead">Linn:</span>
+					</div>
+					<div class="col-sm">
+						<span class="lead"><?php echo $originating_ip_city;?></span>
 					</div>
 				</div>
 				<div class="row pt-3">
-					<h5 class="<?php if($is_faked_time) { echo "text-danger"; } else { echo "text-success"; } ?>">
-						<?php if($is_faked_time) { echo 'E-kirja aega on tõenäoliselt muudetud!'; } else { echo 'E-kirja aega ei ole tõenäoliselt muudetud';} ?>
-					</h5>
+					<h3 class="<?php if($is_faked_time == "true") { echo "text-danger"; } else { echo "text-success"; } ?>">
+						<?php 
+						if($is_faked_time != "Unknown"){
+							if($is_faked_time == "true") { 
+								echo 'E-kirja aega on tõenäoliselt muudetud!'; 
+							}
+						 	else { 
+						 		echo 'E-kirja aega ei ole tõenäoliselt muudetud';
+						 	} 
+					 	}
+						 ?>
+					 	
+					</h3>
 				</div>
 			</div>
 			<div class="col-sm">
-				<h4>Asukoht</h4>
+				<h2>Asukoht</h2>
 				<div id="map" style="width:100%;height:300px;"></div>
 
 			  <script>
