@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-md-5 col-md-offset-1"> Proovi järele kiirelt ja lihtsalt:  </div>
             <div class="col-*-*"> 
-                <button id="home_button" onclick="location='analyse'">Vii mind tuvasta!</button>
+                <button id="home_button" onclick="location='analyse'">Vii mind tuvastama!</button>
             </div>      
         </div>
     </div>
