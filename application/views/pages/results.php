@@ -9,7 +9,7 @@
 						<span class="lead">E-kirjas kuvatav aeg:</span>
 					</div>
 					<div class="col-sm">
-						<span class="lead"><?php echo $thread_index_date;?></span>
+						<span class="lead"><?php echo $displayed_date;?></span>
 					</div>
 				</div>
 				<div class="row pt-1">
@@ -17,7 +17,7 @@
 						<span class="lead">Tegelik aeg:</span>
 					</div>
 					<div class="col-sm">
-						<span class="lead"><?php echo $displayed_date;?></span>
+						<span class="lead"><?php echo $thread_index_date;?></span>
 					</div>
 				</div>
 				<div class="row pt-1">
