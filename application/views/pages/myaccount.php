@@ -14,6 +14,7 @@ if($this->session->email == null){ // kui kasutaja pole sisse logitud.
 		<p>Nimi: <?php echo $this->session->name;//Kasutaja info k2sitlemine. ?></p>
 		<p>Email: <?php echo $this->session->email; ?></p>
 		<p>Aktiveeritud: <?php if($user_info['activated']){ echo "Jah"; } else { echo "Ei"; } ?></p>
+		<p><a href="myaccount/deleteaccount" class="btn btn-danger">Kustuta kasutaja</a></p>
 		
 	</div>
 	<div id="files_panel">

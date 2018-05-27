@@ -59,6 +59,16 @@ class User extends CI_Model
 		return false;
 	}
 
+	public function deleteUser($userId){
+		$userId = $this->db->escape_str($userId);
+		$activationResult = $this->db->simple_query("DELETE FROM activation WHERE user_id=$userId");
+		$filesResult = $this->db->simple_query("DELETE FROM files WHERE owner_id=$userId");
+		$passwordsResult = $this->db->simple_query("DELETE FROM passwords WHERE user_id=$userId");
+
+		$userResult = $this->db->simple_query("DELETE FROM user WHERE id=$userId");
+		return $activationResult && $filesResult && $passwordsResult && $userResult;
+	}
+
 	public function loginViaEmail($email){
 		return $this->loginUser($email, null);
 	}

@@ -77,6 +77,13 @@ class Myaccount extends CI_Controller {
 		redirect(base_url() . "myaccount", 'refresh');
 	}
 
+	public function deleteAccount(){
+		$this->load->model('user');
+
+		$result = $this->user->deleteUser($this->session->id);
+		redirect(base_url() . "login/logout", 'refresh');
+	}
+
 }
 
 ?>
